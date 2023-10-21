@@ -51,6 +51,7 @@ const server = http.createServer((req, res) => {
 
     res.end(JSON.stringify({ uuid: generatedUUID }));
     
+    // Setting the status for the page
   } else if (req.url.startsWith("/status/") && req.method === "GET") {
     const statusCode = parseInt(req.url.split("/")[2]);
     console.log(statusCode);
@@ -62,6 +63,8 @@ const server = http.createServer((req, res) => {
       res.statusCode = 400; // Bad Request
       res.end("Invalid status code format");
     }
+    
+    // Responding after delay
   } else if (req.url.startsWith("/delay/") && req.method === "GET") {
     const delayInSeconds = parseInt(req.url.split("/")[2]);
     if (!isNaN(delayInSeconds)) {
