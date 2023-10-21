@@ -50,6 +50,7 @@ const server = http.createServer((req, res) => {
     // Respond with the generated UUID
 
     res.end(JSON.stringify({ uuid: generatedUUID }));
+    
   } else if (req.url.startsWith("/status/") && req.method === "GET") {
     const statusCode = parseInt(req.url.split("/")[2]);
     console.log(statusCode);
